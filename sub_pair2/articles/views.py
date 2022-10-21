@@ -1,7 +1,7 @@
 import django
 from django.shortcuts import redirect, render
 from .forms import ArticleForm, CommentForm
-from .models import Article
+from .models import Article, Comment
 from django.contrib.auth.decorators import login_required 
 
 # Create your views here.
@@ -39,11 +39,11 @@ def detail(request, pk):
     article = Article.objects.get(pk=pk)
 
     comment_form = CommentForm()
-
     
     context = {
         'article' : article,
         'comment_form' : comment_form,
+        'comments' : article.comment_set.all() #해당 글의 모든 코멘트
     }
 
     return render(request, 'articles/detail.html', context)
