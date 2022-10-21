@@ -2,24 +2,19 @@
 
 {% block content %}
 
-<h1>article INDEX</h1>
-
-<a href="{% url 'articles:create' %}">새글 쓰기</a>
+<h1>article detail</h1>
 
   <div class="row">
-
-    {% for article in articles %}
 
       <div class="card my-3" style="width: ;">
         {% comment %} <img src="..." class="card-img-top" alt="..."> {% endcomment %}
         <div class="card-body">
-          <h5 class="card-title">{{ article.pk }}</h5>
-          <p class="card-text"><a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a></p>
+          <h5 class="card-title">{{ article.title }}</a></h5>
+          <p class="card-text"><a href="">{{ article.content }}</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
 
-    {% endfor %}
   </div>
 
 {% endblock content %}
