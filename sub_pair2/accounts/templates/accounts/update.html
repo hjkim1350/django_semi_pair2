@@ -5,12 +5,12 @@
 {% block content %}
 
 <div class="container">
-<h1 class="fw-bold mt-3">📌 회원가입 페이지</h1>
+<h1 class="fw-bold mt-3">📌 회원정보 수정</h1>
 <hr>
     <form action="" method="POST">
         {% csrf_token %}
         {% bootstrap_form form %}
-        {% bootstrap_button button_type="submit" content="회원가입 완료" %}
+        {% bootstrap_button button_type="submit" content="수정 완료" %}
     </form>
     <div><a href="{% url 'accounts:index' %}">홈으로 돌아가기</a></div>
 </div>
