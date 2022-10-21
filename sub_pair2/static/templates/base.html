@@ -24,21 +24,21 @@
       <a class="navbar-brand" href="{% url 'accounts:login' %}"><i class="bi bi-twitter text-success fs-1"></i></a>
       <span>방문해주셔서 감사합니다! <a href="{% url 'accounts:signup' %}">회원가입</a> 또는 <a href="{% url 'accounts:login' %}">로그인</a>을 해주세요. 😎</span>
       {% endif %}
-
       <button class="navbar-toggler btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="bi bi-list"></i>
-      </button>      
+      </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-lg-0">
               {% if request.user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="{% url 'accounts:index' %}">게시판</a>
               </li>
-              <li class="nav-item align-baseline">
+              <li class="nav-item">
                 {{ request.user }}님, 어서오세요!
               </li>
-              <li class="nav-item align-baseline">
-                <a href="{% url 'accounts:logout' %}">로그아웃</a>
+              <li class="nav-item">
+                <a href="{% url 'accounts:logout' %}"><i class="bi bi-box-arrow-right"></i>로그아웃</a>
               </li>
               {% endif %}
           </ul>
