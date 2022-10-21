@@ -2,23 +2,24 @@
 
 {% block content %}
 
-<h1>article INDEX</h1>
-
-<a href="{% url 'articles:create' %}">새글 쓰기</a>
+<hr><h1 class='text-center'>현정그램</h1><hr>
+<div class='text-end'>
+  <a class='btn btn-primary btn-sm' href="{% url 'articles:create' %}">글 쓰기</a>
+</div>
 
   <div class="row">
 
     {% for article in articles %}
-
-      <div class="card my-3" style="width: ;">
-        {% comment %} <img src="..." class="card-img-top" alt="..."> {% endcomment %}
+    <div class='col-4 my-3'>
+      <div class="card">
+        <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">{{ article.pk }}</h5>
           <p class="card-text"><a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a></p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="#"><div class='heart'></div></a>
         </div>
       </div>
-
+    </div>
     {% endfor %}
   </div>
 
