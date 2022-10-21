@@ -26,15 +26,15 @@
     <div class="col-6">
         <h3>작성한 댓글</h3>
         {% if user.comment_set.count %}
-        <p class="text-muted">{{ user.comment_set.count }}개를 작성하였습니다.</p>
-        {% for comment in user.comment_set.all %}
-        <p>
-            {{ forloop.counter }}
-            <a href="{% url 'articles:detail' comment.article_id %}">{{ comment.com_content }}</a>
-        </p>
-        {% endfor %}
-        {% else %}
-        <p class="text-muted">작성한 댓글이 없습니다.</p>
+            <p class="text-muted">{{ user.comment_set.count }}개를 작성하였습니다.</p>
+                {% for comment in user.comment_set.all %}
+                <p>
+                    {{ forloop.counter }}
+                    <a href="{% url 'articles:detail' comment.article_id %}">{{ comment.content }}</a>
+                </p>
+                {% endfor %}
+            {% else %}
+            <p class="text-muted">작성한 댓글이 없습니다.</p>
         {% endif %}
     </div>
     <div>
