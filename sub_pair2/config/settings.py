@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'articles',
     'accounts',
     # 'imagekit',
-    'django_extensions',
+    # 'django_extensions',
     'django_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [BASE_DIR / "static" / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
