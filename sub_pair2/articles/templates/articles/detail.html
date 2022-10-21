@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 
 {% block content %}
 
@@ -13,6 +14,16 @@
           <p class="card-text"><a href="">{{ article.content }}</p>
           <a href="{% url 'articles:update' article.pk %}" class="btn btn-outline-success">수정하기</a>
           <a href="{% url 'articles:delete' article.pk %}" class="btn btn-outline-danger">삭제하기</a>
+          
+          {% if request.user.is_authenticated %}
+          {% comment %} 코멘트 폼 추가 {% endcomment %}
+          <form action="{% url 'articles:c_create' article.pk %}" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form comment_form %}
+            <input type='submit' value="댓글 작성">
+          </form>
+          {% endif %}
+
         </div>
       </div>
 
