@@ -9,8 +9,10 @@
 {% load static %}
 
 {% block content %}
-
-<hr><h1 class='text-center'>현정그램</h1><hr>
+{% if request.user.is_authenticated %}
+<hr>
+<h1 class='text-center'>현정그램</h1>
+<hr>
 <div class='text-end'>
   <a class='btn btn-primary btn-sm' href="{% url 'articles:create' %}">글 쓰기</a>
 </div>
@@ -42,5 +44,7 @@
     </div>
     {% endfor %}
   </div>
- 
+
+{% endif %}
+
 {% endblock content %}
