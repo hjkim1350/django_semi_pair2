@@ -54,7 +54,7 @@ def update(request, pk):
     article = Article.objects.get(pk=pk)
 
     if request.method == "POST":
-        article_form = ArticleForm(request.POST, instance=article)
+        article_form = ArticleForm(request.POST, request.FILES, instance=article)
         if article_form.is_valid():
             article_form.save()
             return redirect('articles:detail', article.pk)

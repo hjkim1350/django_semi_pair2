@@ -1,32 +1,42 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
+{% load static %}
 
 {% block content %}
-
-<h1>article detail</h1>
 
   <div class="row">
 
       <div class="card my-3" style="width: ;">
-        {% comment %} <img src="..." class="card-img-top" alt="..."> {% endcomment %}
+        {% comment %} 이미지 없는 경우 디폴트 이미지 게시 {% endcomment %}
+        {% if article.image %}
+          <img src="{{ article.image.url }}" alt="{{ article.image }}" class="card-img-top">
+        {% else %}
+          <img src="{% static 'images/bonobono.png' %}" class="card-img-top">
+        {% endif %}
         <div class="card-body">
-          <h5 class="card-title">{{ article.title }}</a></h5>
-          <p class="card-text"><a href="">{{ article.content }}</p>
+          <h5 class="card-title">제목 : {{ article.title }} <span class='float-end'>작성자 : {{ article.user }} </span></h5>
+          <hr>
+          <p class="card-text">내용 : {{ article.content }}</p>
+
+          {% if article.user == request.user %} 
           <a href="{% url 'articles:update' article.pk %}" class="btn btn-outline-success">수정하기</a>
           <a href="{% url 'articles:delete' article.pk %}" class="btn btn-outline-danger">삭제하기</a>
-          
+          {% endif %}
+
           {% comment %} 코멘트 폼 추가 {% endcomment %}
           {% if request.user.is_authenticated %}
           <form action="{% url 'articles:c_create' article.pk %}" method="POST">
             {% csrf_token %}
             {% bootstrap_form comment_form %}
-            <input type='submit' value="댓글 작성">
+            <input type='submit' value="댓글 작성" class="btn btn-outline-primary">
           </form>
           {% comment %} 코멘트 출력 {% endcomment %}
           {% endif %}
             {% for comment in comments %}
             {{ comment.user }} : {{ comment.content }}
             <hr>
+            {% empty %}
+            <p>댓글이 없어요ㅠㅠ</p>
           {% endfor %}
         </div>
       </div>

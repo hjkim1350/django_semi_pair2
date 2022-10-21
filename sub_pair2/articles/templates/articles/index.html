@@ -23,7 +23,7 @@
     <div class='col-4 my-3'>
       <div class="card">
         {% comment %} 이미지 없는 경우 디폴트 이미지 게시 {% endcomment %}
-        {% if article.image%}
+        {% if article.image %}
           <img src="{{ article.image.url }}" alt="{{ article.image }}" class="card-img-top">
         {% else %}
           <img src="{% static 'images/bonobono.png' %}" class="card-img-top">

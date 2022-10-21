@@ -5,7 +5,7 @@
 
 <p>articles/update</p>
 
-<form action="" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
 
   {% csrf_token %}
   {% bootstrap_form article_form %}
