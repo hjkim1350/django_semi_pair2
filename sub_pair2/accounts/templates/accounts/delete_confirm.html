@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+<h1 class="fw-bold mt-3">📌 회원탈퇴 전 비밀번호 확인</h1>
+<hr>
+<form method="POST" novalidate>
+    {% csrf_token %}
+    <p><strong>{{ user.user_id }}</strong> 회원님의 계정이 삭제됩니다.<br>정말 탈퇴하실건가요..?ㅠㅠ<br>탈퇴하시려면 비밀번호를 입력해주세요.</p>
+    <div>
+        <label name="label_password" for="{{ password_form.password.id_for_label }}">{{ password_form.password.label }}</label>
+        {{ password_form.password }}
+        {% if password_form.password.errors %}
+        <script type="text/javascript">
+            document.getElementsByName('password')[0].setAttribute('class', 'form-control is-invalid')
+        </script>
+        {% for error in password_form.password.errors %}
+        <div class="invalid-feedback">
+            {{ error }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <small>
+            본인인증을 위해 비밀번호를 입력해주세요.
+        </small>
+    </div>
+    
+    <button class="btn btn-danger" type="submit" name="bt">탈퇴하기</button>
+</form>
+    <script type="text/javascript">
+        function checkDisable(form) {
+            if (form.ck.checked == true) {
+                form.bt.disabled = false;
+            } else {
+                form.bt.disabled = true;
+            }
+        }
+    </script>
+    <div class="mt-3">
+        <a class="btn btn-dark text-white" href="{% url 'articles:index' %}" style="text-decoration:none;" role="button">
+            <i class="bi bi-house-fill text-white fw-bold"></i> 취소하고 Home으로
+        </a>
+    </div>
+</div>
+
+{% endblock content %}
