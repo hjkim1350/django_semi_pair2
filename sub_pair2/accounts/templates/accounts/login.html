@@ -12,7 +12,9 @@
         {% bootstrap_form form %}
         {% bootstrap_button button_type="submit" content="로그인" %}
     </form>
-    <div><a href="{% url 'accounts:index' %}">홈으로 돌아가기</a></div>
+    <a class="mt-3 btn btn-dark text-white" href="{% url 'accounts:index' %}" style="text-decoration:none;" role="button">
+        <i class="bi bi-house-fill text-white fw-bold"></i> Home
+    </a>
 </div>
 
 {% endblock content %}
