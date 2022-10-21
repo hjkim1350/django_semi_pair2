@@ -11,7 +11,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ article.title }}</a></h5>
           <p class="card-text"><a href="">{{ article.content }}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="{% url 'articles:update' article.pk %}" class="btn btn-primary">수정하기</a>
         </div>
       </div>
 
