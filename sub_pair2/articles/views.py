@@ -20,7 +20,7 @@ def index(request):
 def create(request):
 
     if request.method == "POST":
-        article_form = ArticleForm(request.POST)
+        article_form = ArticleForm(request.POST, request.FILES)
         if article_form.is_valid():
             article = article_form.save(commit=False)
             article.user = request.user
