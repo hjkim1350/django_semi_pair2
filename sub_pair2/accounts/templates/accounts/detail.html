@@ -37,6 +37,14 @@
         <p class="text-muted">작성한 댓글이 없습니다.</p>
         {% endif %}
     </div>
+    <div>
+        <a class="btn btn-dark text-white" href="{% url 'accounts:index' %}" style="text-decoration:none;" role="button">
+            <i class="bi bi-house-fill text-white fw-bold"></i> Home
+        </a>
+        <a class="btn btn-outline-danger" href="{% url 'accounts:delete' %}" style="text-decoration:none;" role="button">
+            <i class="bi bi-person-x"></i> 회원 탈퇴
+        </a>
+    </div>
 </div>
 
 {% endblock content %}
