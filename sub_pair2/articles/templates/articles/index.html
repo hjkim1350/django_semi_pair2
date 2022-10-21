@@ -27,7 +27,7 @@
           <img src="{{ article.image.url }}" alt="{{ article.image }}" class="card-img-top">
         {% else %}
           <img src="{% static 'images/bonobono.png' %}" class="card-img-top">
-        {% endif%}
+        {% endif %}
         <div class="card-body">
           <h5 class="card-title">{{ article.pk }}</h5>
           <p class="card-text"><a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a></p>
@@ -44,11 +44,5 @@
     </div>
     {% endfor %}
   </div>
-<<<<<<< HEAD
- {% endif %}
-=======
-
 {% endif %}
-
->>>>>>> 9993db38db94d272b091c1289cd876c26ea6ca53
 {% endblock content %}
