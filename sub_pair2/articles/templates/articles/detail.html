@@ -33,7 +33,19 @@
           {% comment %} 코멘트 출력 {% endcomment %}
           {% endif %}
             {% for comment in comments %}
-            {{ comment.user }} : {{ comment.content }}
+            <p>{{ comment.user }} : {{ comment.content }} 
+              
+              {% comment %} 댓글 삭제 기능 {% endcomment %}
+              {% comment %} 작성자가 코멘트한 사람일 경우 {% endcomment %}
+              {% if comment.user == request.user %}
+              <span>
+                <form action="{% url 'articles:c_delete' article.pk comment.pk  %}" method="POST">
+                  {% csrf_token %}
+                  <input type='submit' value="삭제" class="btn btn-outline-danger">
+                </form>
+              </span>
+              {% endif %}
+            </p> 
             <hr>
             {% empty %}
             <p>댓글이 없어요ㅠㅠ</p>
